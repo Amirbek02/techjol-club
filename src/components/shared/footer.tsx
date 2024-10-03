@@ -16,7 +16,7 @@ interface Props {
 export const FooterPage: React.FC<Props> = () => {
   return (
     <div style={{ backgroundColor: 'var(--maincolor) ' }}>
-      <div className={`max-w-screen-xl m-auto`} style={{ color: 'var(--darkcolor)' }}>
+      <div className={`max-w-screen-xl m-auto`} style={{ color: 'var(--whitecolor)' }}>
         <div className=" min-h-[313px] mx-11 sm:flex flex-wrap justify-between sm:mx-5">
           <div>
             <Image src={Techjol} alt={''} />
