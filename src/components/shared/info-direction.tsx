@@ -11,7 +11,7 @@ interface Props {
 export const InfoDirection: React.FC<Props> = ({ className }) => {
   return (
     <div className={className}>
-      <Container>
+      <Container className="mx-5">
         <Title text="Frontend" size="lg" className="text-center mt-24 mb-16 font-semibold" />
         <div>
           <Image
