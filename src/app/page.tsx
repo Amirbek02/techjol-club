@@ -1,3 +1,8 @@
+import Connect from "../components/shared/connect";
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <Connect />
+    </div>
+  );
 }
