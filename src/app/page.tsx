@@ -1,7 +1,3 @@
-import { SignUpSecond } from "@/components/shared/signUpSecond";
-
 export default function Home() {
-  return <div>
-    <SignUpSecond/>
-  </div>;
+  return <div></div>;
 }
