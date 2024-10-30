@@ -6,9 +6,9 @@ type Props = {};
 
 export default function Internship({}: Props) {
   return (
-    <div className="flex flex-wrap items-center font-semibold m-5  justify-center gap-10">
+    <div className="flex flex-wrap  items-center font-semibold m-5  justify-center gap-10">
       <div className="p-5 justify-center   sm:justify-start">
-        <h1 className="text-5xl lg:text-7xl  mt-20">
+        <h1 className="text-3xl sm:text-5xl lg:text-7xl  mt-20">
           TECH <span className="text-yellow-600">JOL</span>
         </h1>
         <p className="py-4 text-2xl sm:text-4xl text-gray-400">
@@ -31,7 +31,7 @@ export default function Internship({}: Props) {
           </button>
         </div>
       </div>
-      <div className="hidden sm:block">
+      <div className="hidden  sm:block">
         <Image width={827} src={Image1} alt="img" />
       </div>
     </div>
