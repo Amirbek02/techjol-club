@@ -1,3 +1,8 @@
+import BlogAssets from "@/components/shared/blogAssets";
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <BlogAssets />
+    </div>
+  );
 }
