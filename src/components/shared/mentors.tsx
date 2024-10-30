@@ -1,11 +1,8 @@
 "use client";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import Imafer from "/public/assets/image/mentor1.png";
-import Imafer1 from "/public/assets/image/portners1.png";
-import Imafer2 from "/public/assets/image/partners4.png";
-import Imafer3 from "/public/assets/image/partners3.png";
 
 const Mentors = () => {
   const certificates = [
@@ -35,7 +32,9 @@ const Mentors = () => {
     },
   ];
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(true);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -45,28 +44,42 @@ const Mentors = () => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setPrevBtnEnabled(emblaApi.canScrollPrev());
+    setNextBtnEnabled(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on("select", onSelect);
+    onSelect();
+  }, [emblaApi, onSelect]);
+
   return (
     <div className="container max-w-[1240px] mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold text-center mb-4">Өнөктөштөр</h1>
+      <h1 className=" text-3xl sm:text-5xl font-medium text-center">
+        Менторлор
+      </h1>
 
       <div className="relative">
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-20 m-20">
+        <div className="overflow-hidden " ref={emblaRef}>
+          <div className="flex gap-14 my-8 sm:m-4 sm:pt-10 sm:px-10 items-center ">
             {certificates.map((cert) => (
-              <div key={cert.id} className="flex flex-col items-center">
+              <div
+                key={cert.id}
+                className="flex flex-col   justify-center items-center"
+              >
                 <Image
                   src={cert.image}
-                  alt={`Mentor ${cert.title} , ${cert.descr}`}
-                  className="max-w-[350px] h-full object-cover mx-auto"
-                  width={300}
-                  height={365}
+                  alt={`Mentor ${cert.title}, ${cert.descr}`}
+                  className=" max-w-[350px] object-cover rounded-lg"
+                  height={370}
                 />
-                <p className="mt-2 text-center text-lg font-semibold">
+                <p className="mt-2 text-center text-2xl font-semibold">
                   {cert.title}
                 </p>
-                <p className="mt-2 text-center text-lg font-semibold">
-                  {cert.descr}
-                </p>
+                <p className="mt-2 text-center text">{cert.descr}</p>
               </div>
             ))}
           </div>
@@ -75,6 +88,7 @@ const Mentors = () => {
         <button
           className="absolute left-0 top-1/2 transform -translate-y-1/2 text-gray-600 bg-white rounded-full p-2 shadow-lg"
           onClick={scrollPrev}
+          disabled={!prevBtnEnabled}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -93,8 +107,9 @@ const Mentors = () => {
         </button>
 
         <button
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-600 bg-white rounded-full p-2 shadow-lg"
+          className="absolute   right-0 top-1/2 transform -translate-y-1/2 text-gray-600 bg-white rounded-full p-2 shadow-lg"
           onClick={scrollNext}
+          disabled={!nextBtnEnabled}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
