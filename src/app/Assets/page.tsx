@@ -8,6 +8,11 @@ interface Props {
   className?: string;
 }
 
+interface Post {
+  id: number;
+  title: string;
+  description: string;
+}
 const blogPosts = [
   {
     id: 1,
@@ -18,7 +23,7 @@ const blogPosts = [
       'Хакатон — это подобие "мозгового штурма", когда люди собираются для решения какой-либо проблемы.',
   },
   {
-    id: 1,
+    id: 2,
     imgSrc: blog2,
     title: "Как IT-сфера поможет кыргызстанцам решать проблемы",
     date: "13.08.2021",
@@ -26,7 +31,7 @@ const blogPosts = [
       'Хакатон — это подобие "мозгового штурма", когда люди собираются для решения какой-либо проблемы.',
   },
   {
-    id: 1,
+    id: 3,
     imgSrc: blog2,
     title: "Как IT-сфера поможет кыргызстанцам решать проблемы",
     date: "13.08.2021",
@@ -34,7 +39,7 @@ const blogPosts = [
       'Хакатон — это подобие "мозгового штурма", когда люди собираются для решения какой-либо проблемы.',
   },
   {
-    id: 1,
+    id: 4,
     imgSrc: blog2,
     title: "Как IT-сфера поможет кыргызстанцам решать проблемы",
     date: "13.08.2021",
@@ -42,7 +47,7 @@ const blogPosts = [
       'Хакатон — это подобие "мозгового штурма", когда люди собираются для решения какой-либо проблемы.',
   },
   {
-    id: 1,
+    id: 5,
     imgSrc: blog2,
     title: "Как IT-сфера поможет кыргызстанцам решать проблемы",
     date: "13.08.2021",
@@ -50,7 +55,7 @@ const blogPosts = [
       'Хакатон — это подобие "мозгового штурма", когда люди собираются для решения какой-либо проблемы.',
   },
   {
-    id: 1,
+    id: 6,
     imgSrc: blog2,
     title: "Как IT-сфера поможет кыргызстанцам решать проблемы",
     date: "13.08.2021",
@@ -58,7 +63,7 @@ const blogPosts = [
       'Хакатон — это подобие "мозгового штурма", когда люди собираются для решения какой-либо проблемы.',
   },
   {
-    id: 1,
+    id: 7,
     imgSrc: blog2,
     title: "Как IT-сфера поможет кыргызстанцам решать проблемы",
     date: "13.08.2021",
@@ -66,7 +71,7 @@ const blogPosts = [
       'Хакатон — это подобие "мозгового штурма", когда люди собираются для решения какой-либо проблемы.',
   },
   {
-    id: 1,
+    id: 8,
     imgSrc: blog2,
     title: "Как IT-сфера поможет кыргызстанцам решать проблемы",
     date: "13.08.2021",
@@ -74,7 +79,7 @@ const blogPosts = [
       'Хакатон — это подобие "мозгового штурма", когда люди собираются для решения какой-либо проблемы.',
   },
   {
-    id: 1,
+    id: 9,
     imgSrc: blog2,
     title: "Как IT-сфера поможет кыргызстанцам решать проблемы",
     date: "13.08.2021",
@@ -95,42 +100,44 @@ export const BlogAssets: React.FC<Props> = ({ className }) => {
 
   return (
     <div className="flex flex-col items-center py-10 px-4 mx-auto max-w-screen-lg md:py-16 md:px-10">
-      <div className="flex flex-col md:flex-row md:space-x-8 mb-8">
-        <div className="flex-1">
-          <h1 className="text-lg sm:text-3xl font-semibold leading-tight mb-3 md:text-4xl lg:text-3xl">
-            Как IT-сфера поможет кыргызстанцам решать проблемы
-          </h1>
-          <p className="text-sm sm:text-base text-gray-500 mb-4 md:text-lg">
-            13.08.2024
-          </p>
-          <p className="text-base sm:text-lg md:text-xl leading-relaxed font-serif w-full max-w-md">
-            Информационные технологии существенно упрощают работу не только
-            отдельно взятых людей, но и больших компаний. Например, благодаря им
-            во многих компаниях внедряется CRM-система. Это удобный способ
-            оптимизации бизнес-процессов, ведь система помогает определить
-            интересы и предпочтения клиентов...
-            <span className="text-yellow-500 cursor-pointer">подробнее</span>
-          </p>
+      {currentPage === 1 && (
+        <div className="flex flex-col md:flex-row md:space-x-8 mb-8">
+          <div className="flex-1">
+            <h1 className="text-lg sm:text-3xl font-semibold leading-tight mb-3 md:text-4xl lg:text-3xl">
+              Как IT-сфера поможет кыргызстанцам решать проблемы
+            </h1>
+            <p className="text-sm sm:text-base text-gray-500 mb-4 md:text-lg">
+              13.08.2024
+            </p>
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed font-serif w-full max-w-md">
+              Информационные технологии существенно упрощают работу не только
+              отдельно взятых людей, но и больших компаний. Например, благодаря
+              им во многих компаниях внедряется CRM-система. Это удобный способ
+              оптимизации бизнес-процессов, ведь система помогает определить
+              интересы и предпочтения клиентов...
+              <span className="text-yellow-500 cursor-pointer">подробнее</span>
+            </p>
+          </div>
+          <div className="hidden md:block">
+            <Image
+              src={blog}
+              alt="Blog Image"
+              className="rounded-lg"
+              width={500}
+              height={360}
+            />
+          </div>
+          <div className="md:hidden">
+            <Image
+              src={blog}
+              alt="Blog Image"
+              className="rounded-lg mx-auto"
+              width={340}
+              height={250}
+            />
+          </div>
         </div>
-        <div className="hidden md:block">
-          <Image
-            src={blog}
-            alt="Blog Image"
-            className="rounded-lg"
-            width={500}
-            height={360}
-          />
-        </div>
-        <div className="md:hidden">
-          <Image
-            src={blog}
-            alt="Blog Image"
-            className="rounded-lg mx-auto"
-            width={340}
-            height={250}
-          />
-        </div>
-      </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentPosts.map((post, index) => (
