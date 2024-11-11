@@ -1,3 +1,8 @@
+import TestimonialCarousel from "@/components/shared/carouseler";
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <TestimonialCarousel />
+    </div>
+  );
 }
