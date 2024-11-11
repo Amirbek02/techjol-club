@@ -55,21 +55,18 @@ const testimonials: Testimonial[] = [
     image: "/assets/image/mentor1.png",
     text: `После буткемпа я быстро получила работу, но чувствовала себя на ней ужасно неуверенно. Глядя на опытных специалистов вокруг, я думала: “Боже, да куда мне до них?” и ловила себя на мысли, что мне здесь не место, что я каким-то чудом оказалась среди настоящих профессионалов. Справится самой мне не получилось, поэтому я пошла в академию. Я начала задавать вопросы своим менторам, закрыла пробелы в знаниях. А главное - во мне проснулась уверенность в собственных силах. Моей личной победой стал тот момент, когда в наш офис пришел новый заказчик и выбрал именно меня для работы над проектом!`,
   },
-  // Добавьте другие отзывы по аналогии
 ];
 
 const TestimonialCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Функция для обновления состояния ширины экрана
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 650);
   };
 
-  // Следим за изменением размера экрана
   useEffect(() => {
-    handleResize(); // Проверим на начальном рендере
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -101,7 +98,6 @@ const TestimonialCarousel: React.FC = () => {
     ];
   };
 
-  // Рендерим мобильную версию, если ширина меньше или равна 650px
   if (isMobile) {
     return (
       <div className="relative overflow-hidden mx-auto p-10">
@@ -163,7 +159,6 @@ const TestimonialCarousel: React.FC = () => {
     );
   }
 
-  // Рендерим обычную версию, если ширина больше 650px
   return (
     <div className="relative overflow-hidden mx-auto  sm:p-10">
       <p className=" text-3xl sm:text-5xl font-bold text-center mb-12">
