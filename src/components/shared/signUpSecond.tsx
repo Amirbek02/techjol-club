@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Button } from '../ui/button';
-import Link from 'next/link';
 
 interface Props {
   className?: string;
@@ -20,15 +19,15 @@ export const SignUpSecond: React.FC<Props> = ({ className }) => {
           <Title text="Катталуу" size="lg" className="text-center mb-7 font-medium" />
           <div className="max-w-[391px] m-auto">
             <div className="mb-7">
-              <div className="font-semibold text-sm mb-1">Толук аты жөнүңүз*</div>
+              <div className="font-semibold text-sm mb-1">Телефон номери*</div>
               <Input
                 className="shadow-[0px_3px_10px_0px_rgba(0,0,0,0.25)] border-none placeholder:text-[rgba(206,206,206)] rounded-[10px]"
                 type="text"
-                placeholder="Турат Алыбаев"
+                placeholder="+996 700 700 700"
               />
             </div>
             <div className="mb-7">
-              <div className="font-semibold text-sm mb-1">Толук аты жөнүңүз*</div>
+              <div className="font-semibold text-sm mb-1">Багыты*</div>
               <Select>
                 <SelectTrigger className="shadow-[0px_3px_10px_0px_rgba(0,0,0,0.25)] border-none text-[rgba(206,206,206)] rounded-[10px]">
                   <SelectValue className="text-[rgba(206,206,206)]" placeholder="Тандоо" />
@@ -44,9 +43,6 @@ export const SignUpSecond: React.FC<Props> = ({ className }) => {
               <Button className="bg-customColor px-9 text-mainColor font-semibold text-lg mb-4">
                 Катталуу
               </Button>
-              <Link className="border-b-[1px] text-[rgb(161,158,158)] m-0 p-0" href={'/singIn'}>
-                Кирүү
-              </Link>
             </div>
           </div>
         </div>
