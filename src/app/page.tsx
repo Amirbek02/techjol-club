@@ -1,3 +1,8 @@
+import HeaderAdmin from "@/components/admin/headeradmin";
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <HeaderAdmin />
+    </div>
+  );
 }
