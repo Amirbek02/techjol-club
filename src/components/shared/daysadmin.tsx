@@ -2,12 +2,53 @@
 
 import Image from "next/image";
 import Bell from "/public/assets/image/bell.png";
+import Pro from "/public/assets/image/pro.png";
+import { useState } from "react";
+
+const Modal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+  return (
+    <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center z-50">
+      <div className="bg-white w-[828px] p-6 rounded-lg h-[525px]">
+        <div onClick={onClose} className="flex cursor-pointer justify-end">
+          <Image className="flex justify-end" src={Pro} alt="img" />
+        </div>
+        <div>
+          <ul className="flex">
+            <p className="font-medium text-xl">Кулактандырууну алуучу:</p>
+          </ul>
+          <ul className="flex ">
+            <p className="font-medium text-xl">Кулактандыруунун темасы:</p>
+          </ul>
+          <ul className="flex">
+            <p className="font-medium text-xl">Кулактандыруунун тексти:</p>
+            <textarea
+              style={{
+                maxWidth: "395px",
+              }}
+              placeholder="text"
+              className="border p-2 rounded"
+              rows={5}
+            />
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const DaysAdminPage: React.FC = () => {
+  const [isModal, setIsModal] = useState(false);
+  const openModal = () => {
+    setIsModal(true);
+  };
+  const closeModal = () => {
+    setIsModal(false);
+  };
   return (
     <div className="p-20 space-y-10">
       <div className=" flex  gap-5">
         <div
+          onClick={openModal}
           style={{
             backgroundColor: "#F9D446",
           }}
@@ -36,6 +77,7 @@ export const DaysAdminPage: React.FC = () => {
           </p>
         </div>
       </div>
+      {isModal && <Modal onClose={closeModal} />}
 
       <div className="overflow-x-auto w-[923px] h-[360px]">
         <table className="min-w-full table-fixed border border-gray-800">
