@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Bell from "/public/assets/image/bell.png";
-import Pro from "/public/assets/image/pro.png";
+import Bell from "/public/assets/icon/ring.svg";
+import Pro from "/public/assets/icon/close1.svg";
 import { useState } from "react";
 import Combobox from "./combobox";
 const Local: React.FC<{ onClose: () => void }> = ({ onClose }) => {
@@ -33,23 +33,26 @@ const Modal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             <input
               type="text"
               placeholder="Введите текст"
-              className="w-[395px] h-[30px] pl-5 border border-gray-300 rounded-lg  "
+              className="w-[395px] h-[30px] pl-5 border border-gray-300   "
             />
           </ul>
           <ul className="flex gap-8">
             <p className="font-medium text-xl">Кулактандыруунун тексти:</p>
             <textarea
               placeholder="Комментарий"
-              className="w-[395px] border border-gray-300 rounded px-3 py-2 roulg focus:outline-none "
+              className="w-[395px] border border-gray-300  px-3 py-2 roulg focus:outline-none "
               rows={4}
             ></textarea>
           </ul>
         </div>
-        <div className="flex items-center justify-center pt-5">
+        <div className="flex items-center justify-end pr-44 pt-5">
           <button
+            style={{
+              backgroundColor: "#CDA407",
+            }}
             onClick={opModal}
             type="button"
-            className="w-52  bg-yellow-600 text-white py-2 px-4 rounded hover:bg-cyan-950"
+            className="w-52   text-white py-2 px-4 rounded hover:bg-cyan-950"
           >
             Кошуу
           </button>
@@ -62,6 +65,26 @@ const Modal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
 export const DaysAdminPage: React.FC = () => {
   const [isModal, setIsModal] = useState(false);
+  const [checkboxes, setCheckboxes] = useState([
+    { id: 1, label: "Frontend", days: [false, false, false, false, false] },
+    { id: 2, label: "Backend", days: [false, false, false, false, false] },
+    { id: 3, label: "Flutter", days: [false, false, false, false, false] },
+  ]);
+
+  const toggleCheckbox = (rowId: number, dayIndex: number) => {
+    setCheckboxes((prev) =>
+      prev.map((row) =>
+        row.id === rowId
+          ? {
+              ...row,
+              days: row.days.map((checked, index) =>
+                index === dayIndex ? !checked : checked
+              ),
+            }
+          : row
+      )
+    );
+  };
 
   const openModal = () => {
     setIsModal(true);
@@ -136,72 +159,29 @@ export const DaysAdminPage: React.FC = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr className="bg-gray-200">
-              <td className="border font-semibold text-xl border-gray-400 p-4 text-center">
-                Frontend
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input
-                  type="checkbox"
-                  className="form-checkbox h-6 w-6"
-                  checked
-                />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-            </tr>
-            <tr className="bg-gray-200">
-              <td className="border font-semibold text-xl border-gray-400 p-4 text-center">
-                Backend
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-            </tr>
-            <tr className="bg-gray-200">
-              <td className="border font-semibold text-xl border-gray-400 p-4 text-center">
-                Flutter
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-              <td className="border border-gray-400 p-4 text-center">
-                <input type="checkbox" className="form-checkbox h-6 w-6" />
-              </td>
-            </tr>
-          </tbody>
+          {checkboxes.map((row) => (
+            <tbody key={row.id}>
+              <tr className="bg-gray-200">
+                <td className="border font-semibold text-xl border-gray-400 p-4 text-center">
+                  {row.label}
+                </td>
+                {row.days.map((checked, dayIndex) => (
+                  <td
+                    key={dayIndex}
+                    onClick={() => toggleCheckbox(row.id, dayIndex)}
+                    className="border border-gray-400 p-4 text-center cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      readOnly
+                      className="form-checkbox h-6 w-6"
+                    />
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          ))}
         </table>
       </div>
     </div>
