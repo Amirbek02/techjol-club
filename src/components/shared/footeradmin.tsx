@@ -6,7 +6,7 @@ interface Props {
 
 export const FooterAdmine: React.FC<Props> = ({ className }) => {
   return (
-    <div>
+    <div className={className}>
       <div
         style={{
           backgroundColor: "#031634",

@@ -1,3 +1,8 @@
+import { FooterAdmine } from "@/components/shared/footeradmin";
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <FooterAdmine />
+    </div>
+  );
 }
