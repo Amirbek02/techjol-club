@@ -99,17 +99,17 @@ export const BlogAssets: React.FC<Props> = ({ className }) => {
   const currentPosts = blogPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <div className="flex flex-col items-center py-10 px-4 mx-auto max-w-screen-lg md:py-16 md:px-10">
+    <div className="flex flex-col items-center py-10 px-4 mx-auto max-w-[1240px] md:py-16 md:px-10">
       {currentPage === 1 && (
         <div className="flex flex-col md:flex-row md:space-x-8 mb-8">
           <div className="flex-1">
             <h1 className="text-lg sm:text-3xl font-semibold leading-tight mb-3 md:text-4xl lg:text-3xl">
               Как IT-сфера поможет кыргызстанцам решать проблемы
             </h1>
-            <p className="text-sm sm:text-base text-gray-500 mb-4 md:text-lg">
+            <p className="text-sm sm:text-base text-gray-500 mb-7 md:text-lg">
               13.08.2024
             </p>
-            <p className="text-base sm:text-lg md:text-xl leading-relaxed font-serif w-full max-w-md">
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed font-serif w-full max-w-[592px]">
               Информационные технологии существенно упрощают работу не только
               отдельно взятых людей, но и больших компаний. Например, благодаря
               им во многих компаниях внедряется CRM-система. Это удобный способ
@@ -123,17 +123,17 @@ export const BlogAssets: React.FC<Props> = ({ className }) => {
               src={blog}
               alt="Blog Image"
               className="rounded-lg"
-              width={500}
+              width={550}
               height={360}
             />
           </div>
-          <div className="md:hidden">
+          <div className="md:hidden mt-4">
             <Image
               src={blog}
               alt="Blog Image"
               className="rounded-lg mx-auto"
-              width={340}
-              height={250}
+              width={590}
+              height={200}
             />
           </div>
         </div>
@@ -150,7 +150,7 @@ export const BlogAssets: React.FC<Props> = ({ className }) => {
                 src={post.imgSrc}
                 alt="Blog Post Image"
                 className="rounded-lg"
-                width={300}
+                width={350}
                 height={200}
               />
             </div>
