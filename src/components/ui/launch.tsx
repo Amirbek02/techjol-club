@@ -4,12 +4,10 @@ import Close from "/public/assets/image/pathclose.png";
 import Wlo from "/public/assets/image/png.png";
 
 interface AdProps {
-  name: string;
   title: string;
-  date: string;
 }
 
-const Launch: React.FC<AdProps> = ({ name, title, date }) => {
+const Launch: React.FC<AdProps> = ({ title }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   if (!isOpen) return null;
