@@ -4,14 +4,12 @@ import Close from "/public/assets/image/delete.png";
 import Wlo from "/public/assets/image/deleteicons.png";
 
 interface AdProps {
-  name: string;
   title: string;
-  date: string;
-  butt: string;
-  but: string;
+  button: string;
+  button1: string;
 }
 
-const Delete: React.FC<AdProps> = ({ title, butt, but }) => {
+const Delete: React.FC<AdProps> = ({ title, button1, button }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   if (!isOpen) return null;
@@ -39,13 +37,13 @@ const Delete: React.FC<AdProps> = ({ title, butt, but }) => {
               style={{ backgroundColor: "#CDA407", borderRadius: "8px" }}
               className="text-white text-sm font-semibold w-32 h-10 border-collapse "
             >
-              {butt}
+              {button}
             </button>
             <button
               style={{ backgroundColor: "#CDA407", borderRadius: "8px" }}
               className="text-white w-32 h-10 border-collapse "
             >
-              {but}
+              {button1}
             </button>
           </div>
         </div>
