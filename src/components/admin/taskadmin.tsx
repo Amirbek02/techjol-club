@@ -3,9 +3,9 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Avatar } from "../ui/avatar";
 import Image from "next/image";
-import Mentor from "/public/assets/image/pensil.png";
+import Mentor from "/public/assets/icon/pensile.svg";
 
-import Close from "/public/assets/image/deleteclose.png";
+import Close from "/public/assets/icon/delt.svg";
 
 interface Props {
   className?: string;
@@ -32,7 +32,7 @@ const tasktraker = [
   },
 ];
 
-export const TaskAdminPage: React.FC<Props> = ({ className }) => {
+export const TaskAdminPage: React.FC<Props> = ({}) => {
   return (
     <div className=" w-[1045px] p-20">
       <div>
@@ -43,7 +43,7 @@ export const TaskAdminPage: React.FC<Props> = ({ className }) => {
           <div className="flex pl-44 justify-end items-end">
             <Link
               href="/form"
-              className="w-[190px] rounded-sm bg-yellow-600 text-2xl font-semibold h-[50px] flex items-center justify-center"
+              className="w-[190px] rounded-sm bg-yellow-600 hover:bg-yellow-500 text-2xl font-semibold h-[50px] flex items-center justify-center"
             >
               Кошуу
             </Link>
