@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import Close from "/public/assets/image/delete.png";
-import Wlo from "/public/assets/image/deleteicons.png";
+'use client';
+import React, { useState } from 'react';
+import Image from 'next/image';
+import Close from '/public/assets/image/delete.png';
+import Wlo from '/public/assets/image/deleteicons.png';
 
 interface AdProps {
   title: string;
-  button: string;
-  button1: string;
 }
 
-const Delete: React.FC<AdProps> = ({ title, button1, button }) => {
+const Delete: React.FC<AdProps> = ({ title }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   if (!isOpen) return null;
@@ -29,21 +28,17 @@ const Delete: React.FC<AdProps> = ({ title, button1, button }) => {
           <div className="flex justify-center">
             <Image src={Wlo} alt="Logo" />
           </div>
-          <p className="flex font-semibold text-3xl p-10 items-center justify-center">
-            {title}
-          </p>
+          <p className="flex font-semibold text-3xl p-10 items-center justify-center">{title}</p>
           <div className="flex gap-32 justify-center">
             <button
-              style={{ backgroundColor: "#CDA407", borderRadius: "8px" }}
-              className="text-white text-sm font-semibold w-32 h-10 border-collapse "
-            >
-              {button}
+              style={{ backgroundColor: '#CDA407', borderRadius: '8px' }}
+              className="text-white text-sm font-semibold w-32 h-10 border-collapse ">
+              Ооба
             </button>
             <button
-              style={{ backgroundColor: "#CDA407", borderRadius: "8px" }}
-              className="text-white w-32 h-10 border-collapse "
-            >
-              {button1}
+              style={{ backgroundColor: '#CDA407', borderRadius: '8px' }}
+              className="text-white w-32 h-10 border-collapse ">
+              Жок
             </button>
           </div>
         </div>
