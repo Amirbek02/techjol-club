@@ -1,3 +1,8 @@
+import { DaysAdminPage } from "@/components/admin/daysadmin";
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <DaysAdminPage />
+    </div>
+  );
 }
