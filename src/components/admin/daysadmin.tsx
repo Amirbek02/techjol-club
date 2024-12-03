@@ -5,9 +5,7 @@ import Bell from "/public/assets/icon/ring.svg";
 import Pro from "/public/assets/icon/close1.svg";
 import { useState } from "react";
 import Combobox from "./combobox";
-const Local: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  return <div>dadas</div>;
-};
+import Delete from "../ui/delete";
 
 const Modal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [isLocal, setIsLocal] = useState(false);
@@ -56,7 +54,6 @@ const Modal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           >
             Кошуу
           </button>
-          {isLocal && <Local onClose={cloModal} />}
         </div>
       </div>
     </div>
