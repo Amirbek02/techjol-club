@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
-
+import { Avatar } from "@/components/ui/avatar";
+import Modal from "./[id]/page";
 import Close from "/public/assets/icon/delete7.svg";
 import East from "/public/assets/icon/east.svg";
 
@@ -101,7 +103,10 @@ export const AnnouncePage: React.FC<Props> = ({}) => {
             Кулактандыруу
           </p>
           <div className="flex pl-44 justify-end items-end">
-            <button className="w-[190px] rounded-sm bg-yellow-600 hover:bg-yellow-500 text-2xl font-semibold h-[50px] flex items-center justify-center">
+            <button
+              onClick={openModal}
+              className="w-[190px] rounded-sm bg-yellow-600 hover:bg-yellow-500 text-2xl font-semibold h-[50px] flex items-center justify-center"
+            >
               Кошуу
             </button>
           </div>
@@ -167,6 +172,16 @@ export const AnnouncePage: React.FC<Props> = ({}) => {
           {">>"}
         </button>
       </div>
+      <Modal isOpen={isModal} onClose={closeModal}>
+        <h2 className="text-2xl font-bold">Добавить элемент</h2>
+        <p>Содержимое модального окна</p>
+        <button
+          onClick={closeModal}
+          className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+        >
+          Закрыть
+        </button>
+      </Modal>
     </div>
   );
 };
