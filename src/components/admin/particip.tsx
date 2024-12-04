@@ -6,6 +6,7 @@ import { Avatar } from "../ui/avatar";
 import Close from "/public/assets/icon/delete7.svg";
 import East from "/public/assets/icon/east.svg";
 import Mentor from "/public/assets/image/mentor1.png";
+import { Link } from "lucide-react";
 
 interface Props {
   className?: string;
@@ -72,6 +73,9 @@ const ITEMS_PER_PAGE = 8;
 
 export const ParticipPage: React.FC<Props> = ({}) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   const totalPages = Math.ceil(tasktraker.length / ITEMS_PER_PAGE);
 
@@ -106,6 +110,7 @@ export const ParticipPage: React.FC<Props> = ({}) => {
                 type="text"
                 placeholder="Издөө..."
               />
+
               <Image
                 src="/assets/icon/search.svg"
                 width={24}
@@ -138,10 +143,15 @@ export const ParticipPage: React.FC<Props> = ({}) => {
                 </p>
               </div>
               <div className="flex justify-end items-center gap-10">
-                <div className="cursor-pointer p-2 border shadow-sm">
+                <div
+                  onClick={openModal}
+                  className="cursor-pointer p-2 border shadow-sm"
+                >
                   <Image
                     src={East}
                     alt="img"
+                    width={24}
+                    height={24}
                     className="rounded-full w-[24px] h-[24px]"
                   />
                 </div>
@@ -188,6 +198,73 @@ export const ParticipPage: React.FC<Props> = ({}) => {
           {">>"}
         </button>
       </div>
+      {isOpen && (
+        <div className="fixed  inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 max-w-[800px] max-h-[434px] rounded shadow-lg ">
+            <div>
+              <div
+                onClick={closeModal}
+                className="flex  items-end mb-7 justify-end"
+              >
+                <Image
+                  className=""
+                  src="/assets/icon/close1.svg"
+                  width={34}
+                  height={34}
+                  alt="img"
+                />
+              </div>
+              <div className="flex items-center space-x-6 mb-5">
+                <Avatar className="w-20 h-20">
+                  <Image
+                    src="/assets/image/mentor1.png"
+                    alt="img"
+                    width={100}
+                    height={100}
+                  />
+                </Avatar>
+                <p className="text-2xl font-medium">Амирбек Амираев</p>
+              </div>
+            </div>
+            <div className="flex space-x-4">
+              <div className="border-black bg-yellow-500 rounded-sm p-4 ">
+                <p className="flex text-[20px] font-medium items-center justify-center">
+                  Жеке маалымат
+                </p>
+                <div className="flex space-x-5 ">
+                  <ul className="space-y-3">
+                    <p>Телефон номери:</p>
+                    <p>Email:</p>
+                    <p>Катталган күнү:</p>
+                    <p>Багыты:</p>
+                  </ul>
+                  <ul className="space-y-3">
+                    <p>+996 500 500 500</p>
+                    <p>amirbek@gmail.com</p>
+                    <p>04.03.2024</p>
+                    <p>Frontend</p>
+                  </ul>
+                </div>
+              </div>
+              <div className="border-black bg-[#E9E9E9] rounded-sm p-4 ">
+                <p className="flex text-[20px] font-medium items-center justify-center">
+                  Мүчө акы
+                </p>
+                <div className="flex space-x-5 ">
+                  <ul className="space-y-3">
+                    <p>Төлөнгөн датасы:</p>
+                    <p>Суммасы:</p>
+                  </ul>
+                  <ul className="space-y-3">
+                    <p>07.09.2024-12:01:25</p>
+                    <p>6000.00 сом</p>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
